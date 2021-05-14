@@ -32,7 +32,7 @@
 
         <form class="card p-2" action="{% url 'checkout' %}" method="GET">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code" name="coupon">
+            <input type="text" class="form-control" placeholder="Bonus code" name="coupon">
             <input type="hidden" value="{{ plan }}" name="plan" />
             <div class="input-group-append">
               <button type="submit" class="btn btn-secondary">Bonus Code</button>
