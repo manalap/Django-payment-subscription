@@ -50,10 +50,13 @@ def checkout(request):
             email=request.user.email, source=request.POST['stripeToken'])
         if request.POST['plan'] == 'daily':
             plan = 'prod_JT9t58XPSSfxjX'
+            balance = balance + 1000
         if request.POST['plan'] == 'weekly':
             plan = 'prod_JSvsJbZZR3CDAY'
+            balance = balance + 10000
         if request.POST['plan'] == 'monthly':
             plan = 'prod_JSvu3yJieh44KA'
+            balance = balance + 30000
         if request.POST['coupon'] in coupons:
             percentage = coupons[request.POST['coupon'].lower()]
             try:
