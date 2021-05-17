@@ -117,6 +117,7 @@ def checkout(request):
 
 
 def settings(request):
+    balance = 0.00
     membership = False
     cancel_at_period_end = False
     if request.method == 'POST':
@@ -131,6 +132,7 @@ def settings(request):
         try:
             if request.user.customer.membership:
                 membership = True
+                balance = request.user.Customer.user_balance
             if request.user.customer.cancel_at_period_end:
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
