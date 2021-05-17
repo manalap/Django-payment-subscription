@@ -25,7 +25,9 @@ SECRET_KEY = '=yl=b-rjsono594!l74t#nqx4x(@c0-)12^oi#0^zha06g^eif'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['https://bitcoinminerfree.herokuapp.com'
+]
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
