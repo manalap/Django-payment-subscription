@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customer',
             name='user_balance',
-            field=models.FloatField(default=0.0),
+            field=models.FloatField(default='0.0'),
         ),
     ]
