@@ -169,3 +169,12 @@ class SignUp(generic.CreateView):
         new_user = authenticate(username=username, password=password)
         login(self.request, new_user)
         return valid
+
+
+
+def betting(request):
+    plans = MiningPlan.objects
+    return render(request, 'plans/betting.html', {'plans': plans})
+
+
+    
