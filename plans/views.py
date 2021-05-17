@@ -138,7 +138,8 @@ def settings(request):
         except Customer.DoesNotExist:
             membership = False
     return render(request, 'registration/settings.html', {'membership': membership,
-                                                          'cancel_at_period_end': cancel_at_period_end})
+                                                          'cancel_at_period_end': cancel_at_period_end,
+                                                          'balance': balance})
 
 
 @user_passes_test(lambda u: u.is_superuser)
