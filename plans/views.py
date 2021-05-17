@@ -115,7 +115,7 @@ def checkout(request):
                       {'plan': plan, 'coupon': coupon, 'price': price, 'og_dollar': og_dollar,
                        'coupon_dollar': coupon_dollar, 'final_dollar': final_dollar})
 
-
+@login_required
 def settings(request):
     balance = 0.00
     membership = False
@@ -171,10 +171,13 @@ class SignUp(generic.CreateView):
         return valid
 
 
-
+@login_required
 def betting(request):
-    plans = MiningPlan.objects
-    return render(request, 'plans/betting.html', {'plans': plans})
+    balance = 0.00
+    if request.method == 'POST':
+        if request.user.customer.membership:
+            balance = user.customer.user_balance
+    return render(request, 'plans/betting.html', {'balance': balance})
 
 
     
