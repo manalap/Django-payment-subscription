@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('cancel_at_period_end', models.BooleanField(default=False)),
                 ('membership', models.BooleanField(default=False)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user_balance',models.FloatField(default='0.00')),
             ],
         ),
     ]
