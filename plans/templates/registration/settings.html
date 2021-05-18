@@ -16,6 +16,8 @@
   <p></p>
   
   {% endif %}
+  {% if request.user %}
   <h4 class="alert alert-success">Your Balance: $ {{ balance }}</h4>
+  {% endif %}
 </div>
 {% endblock %}

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=yl=b-rjsono594!l74t#nqx4x(@c0-)12^oi#0^zha06g^eif'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['bitcoinminerfree.herokuapp.com',
