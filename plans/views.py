@@ -171,7 +171,7 @@ class SignUp(generic.CreateView):
         return valid
 
 
-@login_required
+
 def betting(request):
     balance = 0.00
     if request.method == 'POST':

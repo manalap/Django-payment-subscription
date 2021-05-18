@@ -1,10 +1,13 @@
 {% extends 'plans/base.html' %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <div class="container">
     <h4 class="alert alert-success">Your Balance: $ {{ balance }}</h4>
   
 </div>
+{% endif %}
+
 
  
 

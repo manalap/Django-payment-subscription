@@ -128,5 +128,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+DEBUG_PROPAGATE_EXCEPTIONS = True
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
