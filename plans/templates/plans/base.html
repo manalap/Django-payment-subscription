@@ -19,19 +19,8 @@
     <link href="{% static 'pricing.css' %}" rel="stylesheet" />
   </head>
   <body>
-    <div
-      class="
-        d-flex
-        flex-column flex-md-row
-        align-items-center
-        p-3
-        px-md-4
-        mb-3
-        bg-secondary
-        border-bottom
-        shadow-sm
-      "
-    >
+    
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-secondary border-bottom shadow-sm">
       <h5 class="my-0 mr-md-auto font-weight-normal">
         <img src="{% static 'us-dollar.png' %}" width="60" height="60">
         <a href="{% url 'home' %}" class="text-white">MoneyMining</a>
@@ -50,14 +39,15 @@
       <a class="btn btn-outline-primary text-white" href="{% url 'signup' %}">Sign up</a>
       {% endif %}
     </div>
-
+    
     {% block content %} {% endblock %}
-    <footer style="position: relative; bottom: 0; width: 100%; " class="py-2 bg-secondary">
+    <footer class="py-2 fixed-bottom bg-secondary">
       <div class="container">
-        <p class="m-0 text-center text-white">
+        <p class="mb-0 text-center text-white">
           Copyright &copy; bitcoinminerfree.com 2020
         </p>
       </div>
     </footer>
+   
   </body>
 </html>
