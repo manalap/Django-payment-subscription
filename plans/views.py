@@ -49,14 +49,14 @@ def checkout(request):
         stripe_customer = stripe.Customer.create(
             email=request.user.email, source=request.POST['stripeToken'])
         if request.POST['plan'] == 'daily':
-            plan = 'prod_JT9t58XPSSfxjX'
-            balance = balance + 1000
+            plan = 'price_1IqDZbC5S6Zh0s4mjKDqwCMq'
+            
         if request.POST['plan'] == 'weekly':
-            plan = 'prod_JSvsJbZZR3CDAY'
-            balance = balance + 10000
+            plan = 'price_1Iq018C5S6Zh0s4mWgREHOq5'
+            
         if request.POST['plan'] == 'monthly':
-            plan = 'prod_JSvu3yJieh44KA'
-            balance = balance + 30000
+            plan = 'price_1Iq02nC5S6Zh0s4m4xee4hFX'
+            
         if request.POST['coupon'] in coupons:
             percentage = coupons[request.POST['coupon'].lower()]
             try:
@@ -117,7 +117,7 @@ def checkout(request):
 
 @login_required
 def settings(request):
-    balance = 0.00
+    
     membership = False
     cancel_at_period_end = False
     if request.method == 'POST':
@@ -132,7 +132,7 @@ def settings(request):
         try:
             if request.user.customer.membership:
                 membership = True
-                balance = request.user.Customer.user_balance
+                
             if request.user.customer.cancel_at_period_end:
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
@@ -173,11 +173,11 @@ class SignUp(generic.CreateView):
 
 
 def betting(request):
-    balance = 0.00
+    
     if request.method == 'POST':
         if request.user.customer.membership:
             balance = user.customer.user_balance
-    return render(request, 'plans/betting.html', {'balance': balance})
+    return render(request, 'plans/betting.html')
 
 
     
