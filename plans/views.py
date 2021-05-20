@@ -115,11 +115,11 @@ def checkout(request):
 
         return render(request, 'plans/checkout.html',
                       {'plan': plan, 'coupon': coupon, 'price': price, 'og_dollar': og_dollar,
-                       'coupon_dollar': coupon_dollar, 'final_dollar': final_dollar})
+                       'coupon_dollar': coupon_dollar, 'final_dollar': final_dollar, 'amount': amount})
 
 @login_required
 def settings(request):
-    
+    balance = 0.00
     membership = False
     cancel_at_period_end = False
     if request.method == 'POST':
@@ -134,13 +134,15 @@ def settings(request):
         try:
             if request.user.customer.membership:
                 membership = True
-                
+                balance = request.user.customer.user_balance
             if request.user.customer.cancel_at_period_end:
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
+            balance = 0.00
     return render(request, 'registration/settings.html', {'membership': membership,
-                                                          'cancel_at_period_end': cancel_at_period_end,})
+                                                          'cancel_at_period_end': cancel_at_period_end,
+                                                          'balance': balance})
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -174,11 +176,14 @@ class SignUp(generic.CreateView):
 
 
 def betting(request):
-    
-    if request.method == 'POST':
-        if request.user.customer.membership:
+    balance = 0.00
+    try:
+        if request.user.customer:
             balance = user.customer.user_balance
-    return render(request, 'plans/betting.html')
+    except Customer.DoesNotExist:
+            balance = 0.00
+                
+    return render(request, 'plans/betting.html', {'balance': balance})
 
 
     

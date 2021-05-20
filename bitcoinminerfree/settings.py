@@ -26,10 +26,8 @@ SECRET_KEY = '=yl=b-rjsono594!l74t#nqx4x(@c0-)12^oi#0^zha06g^eif'
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['bitcoinminerfree.herokuapp.com',
-    '127.0.0.1',
-    'localhost',
-    '0.0.0.0',
+ALLOWED_HOSTS = ['https://bitcoinminerfree.herokuapp.com',
+    
 ]
 
 LOGIN_URL = 'login'
