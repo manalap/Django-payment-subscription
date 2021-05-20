@@ -129,9 +129,9 @@ STATIC_URL = '/static/'
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARD_PROTO','https')
-SECURE_SSL_REDIRECR = True
-DEBUG = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
+SECURE_SSL_REDIRECRT = True
+
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
