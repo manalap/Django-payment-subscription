@@ -43,20 +43,21 @@ def checkout(request):
     except Customer.DoesNotExist:
         pass
 
-    coupons = {'halloween': 31, 'welcome': 10}
-
+    coupons = {'bademjun': 31, 'karafs': 10}
+    amount = 0.00
     if request.method == 'POST':
         stripe_customer = stripe.Customer.create(
             email=request.user.email, source=request.POST['stripeToken'])
         if request.POST['plan'] == 'daily':
             plan = 'price_1IqDZbC5S6Zh0s4mjKDqwCMq'
+            amount = 1000
             
         if request.POST['plan'] == 'weekly':
             plan = 'price_1Iq018C5S6Zh0s4mWgREHOq5'
-            
+            amount = 10000
         if request.POST['plan'] == 'monthly':
             plan = 'price_1Iq02nC5S6Zh0s4m4xee4hFX'
-            
+            amount = 30000
         if request.POST['coupon'] in coupons:
             percentage = coupons[request.POST['coupon'].lower()]
             try:
@@ -75,6 +76,7 @@ def checkout(request):
         customer.stripeid = stripe_customer.id
         customer.membership = True
         customer.cancel_at_period_end = False
+        customer.user_balance = amount
         customer.stripe_subscription_id = subscription.id
         customer.save()
 
