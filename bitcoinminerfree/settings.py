@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=yl=b-rjsono594!l74t#nqx4x(@c0-)12^oi#0^zha06g^eif'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://bitcoinminerfree.herokuapp.com',
+ALLOWED_HOSTS = ['https://freemoneyminer.herokuapp.com',
     
 ]
 
@@ -127,6 +127,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
+
+if os.getcwd() == '/app':
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARD_PROTO','https')
+    SECURE_SSL_REDIRECR = True
+    DEBUG = False
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
