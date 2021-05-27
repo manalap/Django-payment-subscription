@@ -177,8 +177,6 @@ class SignUp(generic.CreateView):
 
 def betting(request):
     balance = 0.00
-  
-                
     return render(request, 'plans/betting.html', {'balance': balance})
 
 
