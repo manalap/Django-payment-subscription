@@ -23,7 +23,7 @@ urlpatterns = [
     path('plans/<int:pk>', views.plan, name='plan'),
     path('auth/', include('django.contrib.auth.urls')),
     path('auth/signup', views.SignUp.as_view(), name='signup'),
-    path('join', views.join, name='join'),
+    path('invest', views.invest, name='invest'),
     path('checkout', views.checkout, name='checkout'),
     path('auth/settings', views.settings, name='settings'),
     path('updateaccounts', views.updateaccounts, name='updateaccounts'),

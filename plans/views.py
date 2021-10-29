@@ -13,7 +13,7 @@ stripe.api_key = "sk_live_t3f5L4dT08nrLmyNbWXUCzCQ"
 
 def home(request):
     plans = MiningPlan.objects
-    return render(request, 'plans/join.html', {'plans': plans})
+    return render(request, 'plans/invest.html', {'plans': plans})
 
 
 def plan(request, pk):
@@ -24,14 +24,14 @@ def plan(request, pk):
                 if request.user.customer.membership:
                     return render(request, 'plans/plan.html', {'plan': plan})
             except Customer.DoesNotExist:
-                return redirect('join')
-        return redirect('join')
+                return redirect('invest')
+        return redirect('invest')
     else:
         return render(request, 'plans/plan.html', {'plan': plan})
 
 
-def join(request):
-    return render(request, 'plans/join.html')
+def invest(request):
+    return render(request, 'plans/invest.html')
 
 
 @login_required
@@ -174,9 +174,10 @@ class SignUp(generic.CreateView):
         return valid
 
 
-
+@login_required
 def betting(request):
-    balance = 0.00
+    
+    balance=0.00
     return render(request, 'plans/betting.html', {'balance': balance})
 
 
