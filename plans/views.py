@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 import stripe
 from django.http import HttpResponse
 
-stripe.api_key = "sk_live_t3f5L4dT08nrLmyNbWXUCzCQ"
+stripe.api_key = ""
 
 
 def home(request):
